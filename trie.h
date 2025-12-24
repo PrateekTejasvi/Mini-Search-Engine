@@ -1,26 +1,25 @@
 #ifndef TRIE_H
 #define TRIE_H
 
-#include<stdio.h> 
-#include<stdlib.h>
+#define ALPHABET_SIZE 26
 
-#define SIZE 26 
-
-typedef struct DocNode{
-    int docID; 
-    int freq; 
+typedef struct DocNode
+{
+    int docID;
+    int frequency;
     struct DocNode *next;
-}DocNode;
+} DocNode;
 
-typedef struct TrieNode{
-    struct TrieNode *child[SIZE]; 
-    int isEndOfWord; 
-    DocNode *list;
-}TrieNode;
+typedef struct TrieNode
+{
+    struct TrieNode *child[ALPHABET_SIZE];
+    int isEndOfWord;
+    DocNode *docList;
+} TrieNode;
 
-TrieNode* createNode();
-void insertWord(TrieNode *root,char *word,int docID);
-TrieNode* searchTrie(TrieNode *root,char *word); 
-void freeTrie(TrieNode *root); 
+TrieNode *createTrieNode();
+void insertWord(TrieNode *root, char *word, int docID);
+TrieNode *searchTrie(TrieNode *root, char *word);
+void freeTrie(TrieNode *root);
 
 #endif
